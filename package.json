@@ -1,6 +1,6 @@
 {
   "name": "mcp-wallet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A comprehensive Web3 wallet SDK based on the MCP (Model-Context-Protocol) for interacting with Ethereum and other EVM-compatible blockchains. Designed primarily for MCP-enabled AI assistants with secure key management and multi-chain support.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,6 +18,7 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "prepare": "npm run build",
+    "prepublish": "npm run test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
