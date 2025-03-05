@@ -1,6 +1,11 @@
 import { JsonRpcProvider as EthersJsonRpcProvider, Wallet } from 'ethers';
 import { BaseProvider } from './BaseProvider';
-import { TransactionOptions, TokenTransferOptions, SwapOptions, BridgeOptions } from '../interfaces/wallet';
+import {
+  TransactionOptions,
+  TokenTransferOptions,
+  SwapOptions,
+  BridgeOptions
+} from '../interfaces/wallet';
 import { formatEther, parseEther } from 'ethers';
 
 /**
@@ -27,7 +32,9 @@ export class JsonRpcProvider extends BaseProvider {
       data: options.data,
       gasLimit: options.gasLimit ? BigInt(options.gasLimit) : undefined,
       maxFeePerGas: options.maxFeePerGas ? BigInt(options.maxFeePerGas) : undefined,
-      maxPriorityFeePerGas: options.maxPriorityFeePerGas ? BigInt(options.maxPriorityFeePerGas) : undefined,
+      maxPriorityFeePerGas: options.maxPriorityFeePerGas
+        ? BigInt(options.maxPriorityFeePerGas)
+        : undefined,
       nonce: options.nonce
     });
 
@@ -43,7 +50,8 @@ export class JsonRpcProvider extends BaseProvider {
     }
 
     // ERC20 transfer function signature
-    const data = '0xa9059cbb' +
+    const data =
+      '0xa9059cbb' +
       options.to.slice(2).padStart(64, '0') +
       BigInt(options.amount).toString(16).padStart(64, '0');
 
@@ -70,4 +78,4 @@ export class JsonRpcProvider extends BaseProvider {
   async bridge(options: BridgeOptions): Promise<string> {
     throw new Error('Bridge functionality not implemented in JsonRpcProvider');
   }
-} 
+}
