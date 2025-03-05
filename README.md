@@ -2,7 +2,7 @@
 
 A comprehensive Web3 wallet SDK based on the MCP (Model-Context-Protocol) for interacting with Ethereum and other EVM-compatible blockchains. This library provides a secure, feature-rich wallet implementation that can be integrated into any JavaScript/TypeScript application or used directly with AI assistants that support MCP.
 
-[中文文档](./README.zh-CN.md) | [MCP Integration Guide](./docs/MCP-INTEGRATION.md)
+[中文文档](./README.zh-CN.md) |  [MCP Integration Guide](./docs/MCP-INTEGRATION.md)
 
 ## 🤖 MCP Integration - Core Features
 
