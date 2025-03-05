@@ -40,23 +40,23 @@ yarn add mcp-wallet
 
 ```bash
 # 必需配置
-export MCP_RPC_URL="https://mainnet.infura.io/v3/YOUR_INFURA_KEY"
-export MCP_CHAIN_ID="1"
+export MCP_WALLET_RPC_URL="https://mainnet.infura.io/v3/YOUR_INFURA_KEY"
+export MCP_WALLET_CHAIN_ID="1"
 
 # 认证（选择一种）
-export MCP_PRIVATE_KEY="0x..." # 用于签名交易的私钥
+export MCP_WALLET_PRIVATE_KEY="0x..." # 用于签名交易的私钥
 # 或
-export MCP_MNEMONIC="你的十二个助记词" # 用于 HD 钱包的助记词
+export MCP_WALLET_MNEMONIC="你的十二个助记词" # 用于 HD 钱包的助记词
 # 或
-export MCP_ADDRESS="0x..." # 只读模式
+export MCP_WALLET_ADDRESS="0x..." # 只读模式
 
 # 可选配置
-export MCP_MPC_ENABLED="true" # 启用多方计算以增强安全性
-export MCP_MAX_FEE="50" # 最大 Gas 费用（GWEI）
-export MCP_APPROVAL_TIMEOUT="120" # 等待交易批准的秒数
-export MCP_PORT="3000" # MCP 服务器端口（默认：3000）
-export MCP_HOST="127.0.0.1" # MCP 服务器主机（默认：127.0.0.1）
-export MCP_REQUIRE_CONFIRMATION="true" # 是否需要用户确认交易（默认：true）
+export MCP_WALLET_MPC_ENABLED="true" # 启用多方计算以增强安全性
+export MCP_WALLET_MAX_FEE="50" # 最大 Gas 费用（GWEI）
+export MCP_WALLET_APPROVAL_TIMEOUT="120" # 等待交易批准的秒数
+export MCP_WALLET_PORT="3000" # MCP 服务器端口（默认：3000）
+export MCP_WALLET_HOST="127.0.0.1" # MCP 服务器主机（默认：127.0.0.1）
+export MCP_WALLET_REQUIRE_CONFIRMATION="true" # 是否需要用户确认交易（默认：true）
 ```
 
 ### 使用 CLI 初始化
@@ -194,9 +194,9 @@ const server = createMcpServer({
   host: '127.0.0.1',
   requireConfirmation: true,
   wallet: {
-    privateKey: process.env.MCP_PRIVATE_KEY,
-    rpcUrl: process.env.MCP_RPC_URL,
-    chainId: parseInt(process.env.MCP_CHAIN_ID || '1')
+    privateKey: process.env.MCP_WALLET_PRIVATE_KEY,
+    rpcUrl: process.env.MCP_WALLET_RPC_URL,
+    chainId: parseInt(process.env.MCP_WALLET_CHAIN_ID || '1')
   }
 });
 
@@ -217,79 +217,4 @@ MCP 服务器暴露以下函数：
 1. **钱包信息**：
    - `getAddress()` - 获取钱包地址
    - `getBalance()` - 获取 ETH 余额
-   - `getNetwork()` - 获取当前网络信息
-
-2. **代币操作**：
-   - `getTokenBalance(tokenAddress)` - 获取 ERC-20 代币余额
-   - `getTokenInfo(tokenAddress)` - 获取代币元数据
-   - `getTokenAllowance(tokenAddress, spenderAddress)` - 检查代币授权
-
-3. **交易**：
-   - `sendTransaction(txParams)` - 发送 ETH 交易
-   - `sendToken(tokenAddress, to, amount)` - 发送代币
-   - `estimateGas(txParams)` - 估算交易 Gas 费用
-
-4. **高级功能**：
-   - `swap(fromToken, toToken, amount)` - 交换代币
-   - `bridge(toChainId, token, amount)` - 跨链桥接资产
-
-## 安全考虑
-
-在使用 MCP 集成时，请记住以下安全考虑：
-
-### 1. 使用只读模式
-
-当不需要交易功能时，使用只读模式配置钱包：
-
-```javascript
-const wallet = new EvmMcpWallet({
-  address: '0x你的地址', // 只读模式
-  rpcUrl: 'https://mainnet.infura.io/v3/YOUR_INFURA_KEY',
-  chainId: 1
-});
-```
-
-### 2. 限制操作
-
-限制 AI 助手可以执行的操作类型：
-
-```javascript
-const server = createMcpServer({
-  // ...其他配置
-  allowedOperations: ['getAddress', 'getBalance', 'getTokenBalance'],
-  disallowedOperations: ['sendTransaction', 'swap']
-});
-```
-
-### 3. 要求用户确认
-
-对所有交易要求用户确认：
-
-```javascript
-const server = createMcpServer({
-  // ...其他配置
-  requireConfirmation: true,
-  confirmationTimeout: 120 // 秒
-});
-```
-
-### 4. 监控活动
-
-启用日志记录和监控：
-
-```javascript
-const server = createMcpServer({
-  // ...其他配置
-  logging: true,
-  logLevel: 'info',
-  notifyOnTransaction: true
-});
-```
-
-## 参考资料
-
-- [MCP 钱包 GitHub 仓库](https://github.com/yourusername/mcp-wallet)
-- [MCP 协议规范](https://github.com/anthropics/anthropic-cookbook/tree/main/mcp)
-- [以太坊开发者文档](https://ethereum.org/zh/developers/docs/)
-- [Web3.js 文档](https://web3js.readthedocs.io/)
-- [Ethers.js 文档](https://docs.ethers.org/) 
+   - `getNetwork()`

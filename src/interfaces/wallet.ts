@@ -46,6 +46,26 @@ export interface WalletConfig {
    * Maximum gas fee in GWEI
    */
   maxFeePerGas?: string;
+
+  /**
+   * Network configuration
+   */
+  network?: {
+    /**
+     * Network name (e.g., 'Ethereum Mainnet', 'BSC Mainnet')
+     */
+    name: string;
+
+    /**
+     * Block explorer URL
+     */
+    explorerUrl: string;
+
+    /**
+     * Native token symbol (e.g., 'ETH', 'BNB')
+     */
+    nativeToken: string;
+  };
 }
 
 /**

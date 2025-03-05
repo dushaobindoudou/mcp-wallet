@@ -23,26 +23,31 @@ program
 // Helper function to get wallet configuration from environment variables
 function getWalletConfigFromEnv(): WalletConfig {
   const config: WalletConfig = {
-    rpcUrl: process.env.MCP_RPC_URL || '',
-    chainId: process.env.MCP_CHAIN_ID ? parseInt(process.env.MCP_CHAIN_ID) : 0
+    rpcUrl: process.env.MCP_WALLET_RPC_URL || 'https://eth.llamarpc.com',
+    chainId: process.env.MCP_WALLET_CHAIN_ID ? parseInt(process.env.MCP_WALLET_CHAIN_ID) : 1,
+    network: {
+      name: process.env.MCP_WALLET_NETWORK_NAME || 'Ethereum Mainnet',
+      explorerUrl: process.env.MCP_WALLET_EXPLORER_URL || 'https://etherscan.io',
+      nativeToken: process.env.MCP_WALLET_NATIVE_TOKEN || 'ETH'
+    }
   };
 
   // Add authentication method (only one should be set)
-  if (process.env.MCP_PRIVATE_KEY) {
-    config.privateKey = process.env.MCP_PRIVATE_KEY;
-  } else if (process.env.MCP_MNEMONIC) {
-    config.mnemonic = process.env.MCP_MNEMONIC;
-  } else if (process.env.MCP_ADDRESS) {
-    config.address = process.env.MCP_ADDRESS || '';
+  if (process.env.MCP_WALLET_PRIVATE_KEY) {
+    config.privateKey = process.env.MCP_WALLET_PRIVATE_KEY;
+  } else if (process.env.MCP_WALLET_MNEMONIC) {
+    config.mnemonic = process.env.MCP_WALLET_MNEMONIC;
+  } else if (process.env.MCP_WALLET_ADDRESS) {
+    config.address = process.env.MCP_WALLET_ADDRESS || '';
   }
 
   // Add optional configurations
-  if (process.env.MCP_MPC_ENABLED === 'true') {
+  if (process.env.MCP_WALLET_MPC_ENABLED === 'true') {
     config.enableMpc = true;
   }
 
-  if (process.env.MCP_MAX_FEE) {
-    config.maxFeePerGas = process.env.MCP_MAX_FEE;
+  if (process.env.MCP_WALLET_MAX_FEE) {
+    config.maxFeePerGas = process.env.MCP_WALLET_MAX_FEE;
   }
 
   return config;
@@ -127,13 +132,13 @@ program
         type: 'input',
         name: 'rpcUrl',
         message: 'Enter RPC URL:',
-        default: process.env.MCP_RPC_URL || 'https://mainnet.infura.io/v3/YOUR_INFURA_KEY'
+        default: process.env.MCP_WALLET_RPC_URL || 'https://mainnet.infura.io/v3/YOUR_INFURA_KEY'
       },
       {
         type: 'number',
         name: 'chainId',
         message: 'Enter Chain ID:',
-        default: process.env.MCP_CHAIN_ID ? parseInt(process.env.MCP_CHAIN_ID) : 1
+        default: process.env.MCP_WALLET_CHAIN_ID ? parseInt(process.env.MCP_WALLET_CHAIN_ID) : 1
       },
       {
         type: 'list',
@@ -178,23 +183,23 @@ program
     ]);
 
     // Create .env file content
-    let envContent = `MCP_RPC_URL="${answers.rpcUrl}"\n`;
-    envContent += `MCP_CHAIN_ID="${answers.chainId}"\n`;
+    let envContent = `MCP_WALLET_RPC_URL="${answers.rpcUrl}"\n`;
+    envContent += `MCP_WALLET_CHAIN_ID="${answers.chainId}"\n`;
 
     if (answers.privateKey) {
-      envContent += `MCP_PRIVATE_KEY="${answers.privateKey}"\n`;
+      envContent += `MCP_WALLET_PRIVATE_KEY="${answers.privateKey}"\n`;
     } else if (answers.mnemonic) {
-      envContent += `MCP_MNEMONIC="${answers.mnemonic}"\n`;
+      envContent += `MCP_WALLET_MNEMONIC="${answers.mnemonic}"\n`;
     } else if (answers.address) {
-      envContent += `MCP_ADDRESS="${answers.address}"\n`;
+      envContent += `MCP_WALLET_ADDRESS="${answers.address}"\n`;
     }
 
     if (answers.enableMpc) {
-      envContent += `MCP_MPC_ENABLED="true"\n`;
+      envContent += `MCP_WALLET_MPC_ENABLED="true"\n`;
     }
 
     if (answers.maxFee) {
-      envContent += `MCP_MAX_FEE="${answers.maxFee}"\n`;
+      envContent += `MCP_WALLET_MAX_FEE="${answers.maxFee}"\n`;
     }
 
     // Save to .env file in user's home directory
