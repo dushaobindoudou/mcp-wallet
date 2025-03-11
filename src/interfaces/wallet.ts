@@ -48,11 +48,16 @@ export interface WalletConfig {
   maxFeePerGas?: string;
 
   /**
-   * Network configuration
+   * Seconds to wait for transaction approval
+   */
+  approvalTimeout?: number;
+
+  /**
+   * Network information
    */
   network?: {
     /**
-     * Network name (e.g., 'Ethereum Mainnet', 'BSC Mainnet')
+     * Network name (e.g., "Monad Mainnet")
      */
     name: string;
 
@@ -62,7 +67,7 @@ export interface WalletConfig {
     explorerUrl: string;
 
     /**
-     * Native token symbol (e.g., 'ETH', 'BNB')
+     * Native token symbol (e.g., "MONAD")
      */
     nativeToken: string;
   };

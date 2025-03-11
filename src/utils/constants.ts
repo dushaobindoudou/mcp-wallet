@@ -24,6 +24,8 @@ export const ERC20_ABI = [
  * Chain IDs for supported networks
  */
 export const CHAIN_IDS = {
+  MONAD: 201,
+  MONAD_TESTNET: 10143,
   ETHEREUM: 1,
   ROPSTEN: 3,
   RINKEBY: 4,
@@ -49,6 +51,17 @@ export const CHAIN_IDS = {
   CRONOS: 25,
   AURORA: 1313161554,
   BOBA: 288
+};
+
+/**
+ * Common token addresses on Monad mainnet
+ */
+export const MONAD_TOKENS: { [key: string]: string } = {
+  MONAD: 'MONAD', // Native token
+  WMONAD: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', // Placeholder - replace with actual address
+  USDT: '0xdAC17F958D2ee523a2206206994597C13D831ec7', // Placeholder - replace with actual address
+  USDC: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', // Placeholder - replace with actual address
+  DAI: '0x6B175474E89094C44Da98b954EedeAC495271d0F' // Placeholder - replace with actual address
 };
 
 /**
@@ -79,13 +92,15 @@ export const DEFAULT_GAS_LIMITS = {
   ERC20_TRANSFER: 65000,
   ERC20_APPROVE: 45000,
   SWAP: 250000,
-  BRIDGE: 300000
+  BRIDGE: 300000,
+  TOKEN_DEPLOY: 3000000
 };
 
 /**
  * Default derivation paths for different chains
  */
 export const DERIVATION_PATHS = {
+  MONAD: "m/44'/60'/0'/0/0", // Same as Ethereum
   ETHEREUM: "m/44'/60'/0'/0/0",
   POLYGON: "m/44'/60'/0'/0/0", // Same as Ethereum
   BSC: "m/44'/60'/0'/0/0", // Same as Ethereum
@@ -98,6 +113,8 @@ export const DERIVATION_PATHS = {
  * RPC URLs for different networks (placeholders - users should provide their own)
  */
 export const DEFAULT_RPC_URLS = {
+  [CHAIN_IDS.MONAD]: 'https://rpc.monad.xyz',
+  [CHAIN_IDS.MONAD_TESTNET]: 'https://rpc-testnet.monad.xyz',
   [CHAIN_IDS.ETHEREUM]: 'https://mainnet.infura.io/v3/YOUR_INFURA_KEY',
   [CHAIN_IDS.POLYGON]: 'https://polygon-rpc.com',
   [CHAIN_IDS.ARBITRUM_ONE]: 'https://arb1.arbitrum.io/rpc',

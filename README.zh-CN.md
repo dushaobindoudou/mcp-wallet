@@ -1,6 +1,6 @@
 # MCP 钱包
 
-基于 MCP（模型-上下文-协议）的综合性 Web3 钱包 SDK，用于与以太坊和其他 EVM 兼容区块链交互。该库提供了一个安全、功能丰富的钱包实现，可以集成到任何 JavaScript/TypeScript 应用程序中或直接与支持 MCP 的 AI 助手一起使用。
+基于 MCP（模型-上下文-协议）的综合性 Web3 钱包 SDK，用于与 Monad 和其他 EVM 兼容区块链交互。该库提供了一个安全、功能丰富的钱包实现，可以集成到任何 JavaScript/TypeScript 应用程序中或直接与支持 MCP 的 AI 助手一起使用。
 
 [English Documentation](./README.md) | [MCP 集成指南](./docs/MCP-INTEGRATION.zh-CN.md)
 
@@ -44,7 +44,7 @@ MCP 钱包通过 MCP 支持以下操作：
 
 #### DeFi 操作
 - 通过 Uniswap 进行代币交换
-  - ETH 换取代币
+  - MONAD 换取代币
   - 代币之间互换
   - 支持多个 DEX 协议
   - 自定义滑点和截止时间
@@ -52,7 +52,7 @@ MCP 钱包通过 MCP 支持以下操作：
 #### 跨链操作
 - 在不同链之间桥接资产
   - 支持 Across Protocol
-  - 支持主要 EVM 链（以太坊、Polygon、Arbitrum、Optimism）
+  - 支持主要 EVM 链（Monad、以太坊、Polygon、Arbitrum、Optimism）
   - 跨链代币转账
   - 桥接费用估算
 
@@ -85,28 +85,28 @@ MCP 钱包通过 MCP 支持以下操作：
 "查看我的 USDC 余额"
 "发送 100 USDT 到 0x123..."
 "显示我的 NFT 收藏"
-"ETH 的当前价格是多少？"
+"MONAD 的当前价格是多少？"
 ```
 
 #### DeFi 操作
 ```
-"将 1 个 ETH 换成 USDC"
-"查询用 1000 USDT 换 ETH 的最佳汇率"
+"将 1 个 MONAD 换成 USDC"
+"查询用 1000 USDT 换 MONAD 的最佳汇率"
 "显示我参与的流动性池"
-"计算用 5 ETH 换 USDC 的滑点"
+"计算用 5 MONAD 换 USDC 的滑点"
 ```
 
 #### 跨链操作
 ```
-"将 1 个 ETH 从以太坊转到 Polygon"
-"查询将 1000 USDC 转到 Arbitrum 的费用"
+"将 1 个 MONAD 从 Monad 转到以太坊"
+"查询将 1000 USDC 转到 Monad 的费用"
 "显示转到 Optimism 的可用桥接选项"
 "追踪我的跨链转账状态"
 ```
 
 #### 交易管理
 ```
-"创建一笔发送 1 ETH 的交易"
+"创建一笔发送 1 MONAD 的交易"
 "估算这笔转账的 Gas 费用"
 "查看交易 0x123... 的状态"
 "显示我的待处理交易"
@@ -189,7 +189,7 @@ MCP 钱包通过 MCP 支持以下操作：
 ### 使用 npx 运行
 
 ```bash
-env MCP_RPC_URL=https://mainnet.infura.io/v3/YOUR_INFURA_KEY MCP_CHAIN_ID=1 npx -y mcp-wallet-mcp
+env MCP_RPC_URL=https://rpc.monad.xyz MCP_CHAIN_ID=201 npx -y mcp-wallet-mcp
 ```
 
 ### 全局安装（推荐）
@@ -221,11 +221,9 @@ yarn add mcp-wallet
 4. 输入以下内容：
    - 名称："mcp-wallet"（或你喜欢的名称）
    - 类型："command"
-   - 命令：`env MCP_RPC_URL=https://mainnet.infura.io/v3/YOUR_INFURA_KEY MCP_CHAIN_ID=1 npx -y mcp-wallet-mcp`
+   - 命令：`env MCP_RPC_URL=https://rpc.monad.xyz MCP_CHAIN_ID=201 npx -y mcp-wallet-mcp`
 
-> 如果你使用 Windows，请尝试 `cmd /c "set MCP_RPC_URL=https://mainnet.infura.io/v3/YOUR_INFURA_KEY && set MCP_CHAIN_ID=1 && npx -y mcp-wallet-mcp"`
-
-将 `YOUR_INFURA_KEY` 替换为你的 Infura API 密钥。
+> 如果你使用 Windows，请尝试 `cmd /c "set MCP_RPC_URL=https://rpc.monad.xyz && set MCP_CHAIN_ID=201 && npx -y mcp-wallet-mcp"`
 
 ### 在 Windsurf 中运行
 
@@ -238,8 +236,8 @@ yarn add mcp-wallet
       "command": "npx",
       "args": ["-y", "mcp-wallet-mcp"],
       "env": {
-        "MCP_RPC_URL": "https://mainnet.infura.io/v3/YOUR_INFURA_KEY",
-        "MCP_CHAIN_ID": "1",
+        "MCP_RPC_URL": "https://rpc.monad.xyz",
+        "MCP_CHAIN_ID": "201",
         "MCP_ADDRESS": "YOUR_WALLET_ADDRESS",
         "MCP_MPC_ENABLED": "true"
       }
@@ -254,8 +252,8 @@ yarn add mcp-wallet
 
 ```bash
 # 必需配置
-export MCP_RPC_URL="https://mainnet.infura.io/v3/YOUR_INFURA_KEY"
-export MCP_CHAIN_ID="1"
+export MCP_RPC_URL="https://rpc.monad.xyz"
+export MCP_CHAIN_ID="201"
 
 # 认证（选择一种）
 export MCP_PRIVATE_KEY="0x..." # 用于签名交易的私钥
@@ -281,13 +279,13 @@ mcp-wallet init
 # 获取钱包地址
 mcp-wallet address
 
-# 获取 ETH 余额
+# 获取 MONAD 余额
 mcp-wallet balance
 
 # 获取代币余额
 mcp-wallet token-balance 0x代币合约地址
 
-# 发送 ETH
+# 发送 MONAD
 mcp-wallet send 0x接收地址 0.1
 
 # 发送代币

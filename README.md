@@ -1,6 +1,6 @@
 # MCP Wallet
 
-A comprehensive Web3 wallet SDK based on the MCP (Model-Context-Protocol) for interacting with Ethereum and other EVM-compatible blockchains. This library provides a secure, feature-rich wallet implementation that can be integrated into any JavaScript/TypeScript application or used directly with AI assistants that support MCP.
+A comprehensive Web3 wallet SDK based on the MCP (Model-Context-Protocol) for interacting with Monad and other EVM-compatible blockchains. This library provides a secure, feature-rich wallet implementation that can be integrated into any JavaScript/TypeScript application or used directly with AI assistants that support MCP.
 
 [中文文档](./README.zh-CN.md) |  [MCP Integration Guide](./docs/MCP-INTEGRATION.md)
 
@@ -44,7 +44,7 @@ The MCP Wallet supports the following operations through MCP:
 
 #### DeFi Operations
 - Token swaps via Uniswap
-  - ETH to token swaps
+  - MONAD to token swaps
   - Token to token swaps
   - Support for multiple DEX protocols
   - Custom slippage and deadline settings
@@ -52,7 +52,7 @@ The MCP Wallet supports the following operations through MCP:
 #### Cross-chain Operations
 - Bridge assets between chains
   - Support for Across Protocol
-  - Support for major EVM chains (Ethereum, Polygon, Arbitrum, Optimism)
+  - Support for major EVM chains (Monad, Ethereum, Polygon, Arbitrum, Optimism)
   - Cross-chain token transfers
   - Bridge fee estimation
 
@@ -85,28 +85,28 @@ Here are some examples of how to interact with the wallet through natural langua
 "Check my USDC balance"
 "Send 100 USDT to 0x123..."
 "Show me my NFT collection"
-"What's the current price of ETH?"
+"What's the current price of MONAD?"
 ```
 
 #### DeFi Operations
 ```
-"Swap 1 ETH to USDC"
-"What's the best rate for swapping 1000 USDT to ETH?"
+"Swap 1 MONAD to USDC"
+"What's the best rate for swapping 1000 USDT to MONAD?"
 "Show me the liquidity pools I'm participating in"
-"Calculate slippage for swapping 5 ETH to USDC"
+"Calculate slippage for swapping 5 MONAD to USDC"
 ```
 
 #### Cross-chain Operations
 ```
-"Bridge 1 ETH from Ethereum to Polygon"
-"What's the fee for bridging 1000 USDC to Arbitrum?"
-"Show available bridge options for ETH to Optimism"
+"Bridge 1 MONAD from Monad to Ethereum"
+"What's the fee for bridging 1000 USDC to Monad?"
+"Show available bridge options for MONAD to Optimism"
 "Track my cross-chain transfer status"
 ```
 
 #### Transaction Management
 ```
-"Create a transaction to send 1 ETH"
+"Create a transaction to send 1 MONAD"
 "Estimate gas fee for this transfer"
 "Check the status of transaction 0x123..."
 "Show my pending transactions"
@@ -213,11 +213,9 @@ To configure MCP Wallet in Cursor:
 4. Enter the following:
    - Name: "mcp-wallet" (or your preferred name)
    - Type: "command"
-   - Command: `env MCP_RPC_URL=https://mainnet.infura.io/v3/YOUR_INFURA_KEY MCP_CHAIN_ID=1 npx -y mcp-wallet-mcp`
+   - Command: `env MCP_RPC_URL=https://rpc.monad.xyz MCP_CHAIN_ID=201 npx -y mcp-wallet-mcp`
 
-> If you are using Windows, try `cmd /c "set MCP_RPC_URL=https://mainnet.infura.io/v3/YOUR_INFURA_KEY && set MCP_CHAIN_ID=1 && npx -y mcp-wallet-mcp"`
-
-Replace `YOUR_INFURA_KEY` with your Infura API key.
+> If you are using Windows, try `cmd /c "set MCP_RPC_URL=https://rpc.monad.xyz && set MCP_CHAIN_ID=201 && npx -y mcp-wallet-mcp"`
 
 ### Running on Windsurf
 
@@ -230,8 +228,8 @@ Add this to your `./codeium/windsurf/model_config.json`:
       "command": "npx",
       "args": ["-y", "mcp-wallet-mcp"],
       "env": {
-        "MCP_RPC_URL": "https://mainnet.infura.io/v3/YOUR_INFURA_KEY",
-        "MCP_CHAIN_ID": "1",
+        "MCP_RPC_URL": "https://rpc.monad.xyz",
+        "MCP_CHAIN_ID": "201",
         "MCP_ADDRESS": "YOUR_WALLET_ADDRESS",
         "MCP_MPC_ENABLED": "true"
       }
@@ -246,8 +244,8 @@ The recommended way to configure MCP Wallet is through environment variables:
 
 ```bash
 # Required configuration
-export MCP_RPC_URL="https://mainnet.infura.io/v3/YOUR_INFURA_KEY"
-export MCP_CHAIN_ID="1"
+export MCP_RPC_URL="https://testnet.rpc.monad.xyz"
+export MCP_CHAIN_ID="10143"
 
 # Authentication (choose one)
 export MCP_PRIVATE_KEY="0x..." # Private key for signing transactions
@@ -273,13 +271,13 @@ mcp-wallet init
 # Get wallet address
 mcp-wallet address
 
-# Get ETH balance
+# Get MONAD balance
 mcp-wallet balance
 
 # Get token balance
 mcp-wallet token-balance 0xTokenContractAddress
 
-# Send ETH
+# Send MONAD
 mcp-wallet send 0xRecipientAddress 0.1
 
 # Send tokens

@@ -23,12 +23,12 @@ program
 // Helper function to get wallet configuration from environment variables
 function getWalletConfigFromEnv(): WalletConfig {
   const config: WalletConfig = {
-    rpcUrl: process.env.MCP_WALLET_RPC_URL || 'https://eth.llamarpc.com',
-    chainId: process.env.MCP_WALLET_CHAIN_ID ? parseInt(process.env.MCP_WALLET_CHAIN_ID) : 1,
+    rpcUrl: process.env.MCP_WALLET_RPC_URL || 'https://rpc.monad.xyz',
+    chainId: process.env.MCP_WALLET_CHAIN_ID ? parseInt(process.env.MCP_WALLET_CHAIN_ID) : 201,
     network: {
-      name: process.env.MCP_WALLET_NETWORK_NAME || 'Ethereum Mainnet',
-      explorerUrl: process.env.MCP_WALLET_EXPLORER_URL || 'https://etherscan.io',
-      nativeToken: process.env.MCP_WALLET_NATIVE_TOKEN || 'ETH'
+      name: process.env.MCP_WALLET_NETWORK_NAME || 'Monad Mainnet',
+      explorerUrl: process.env.MCP_WALLET_EXPLORER_URL || 'https://explorer.monad.xyz',
+      nativeToken: process.env.MCP_WALLET_NATIVE_TOKEN || 'MONAD'
     }
   };
 

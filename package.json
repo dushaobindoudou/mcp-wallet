@@ -1,7 +1,7 @@
 {
   "name": "mcp-wallet",
-  "version": "0.1.1",
-  "description": "A comprehensive Web3 wallet SDK based on the MCP (Model-Context-Protocol) for interacting with Ethereum and other EVM-compatible blockchains. Designed primarily for MCP-enabled AI assistants with secure key management and multi-chain support.",
+  "version": "0.1.2",
+  "description": "A comprehensive Web3 wallet SDK based on the MCP (Model-Context-Protocol) for interacting with Monad and other EVM-compatible blockchains. Designed primarily for MCP-enabled AI assistants with secure key management and multi-chain support.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
@@ -32,6 +32,7 @@
   "keywords": [
     "web3",
     "wallet",
+    "monad",
     "ethereum",
     "evm",
     "mcp",
@@ -90,7 +91,7 @@
   "preferGlobal": true,
   "mcp": {
     "name": "mcp-wallet",
-    "description": "A secure Web3 wallet for interacting with Ethereum and other EVM chains",
+    "description": "A secure Web3 wallet for interacting with Monad and other EVM chains",
     "version": "0.1.0",
     "type": "command",
     "command": "npx -y mcp-wallet-mcp"
