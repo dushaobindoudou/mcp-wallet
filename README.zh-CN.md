@@ -189,7 +189,7 @@ MCP 钱包通过 MCP 支持以下操作：
 ### 使用 npx 运行
 
 ```bash
-env MCP_RPC_URL=https://rpc.monad.xyz MCP_CHAIN_ID=201 npx -y mcp-wallet-mcp
+env MCP_RPC_URL=https://testnet.rpc.monad.xyz MCP_CHAIN_ID=10143 npx -y mcp-wallet-mcp
 ```
 
 ### 全局安装（推荐）
@@ -221,9 +221,9 @@ yarn add mcp-wallet
 4. 输入以下内容：
    - 名称："mcp-wallet"（或你喜欢的名称）
    - 类型："command"
-   - 命令：`env MCP_RPC_URL=https://rpc.monad.xyz MCP_CHAIN_ID=201 npx -y mcp-wallet-mcp`
+   - 命令：`env MCP_PRIVATE_KEY=0x... npx -y mcp-wallet-mcp`
 
-> 如果你使用 Windows，请尝试 `cmd /c "set MCP_RPC_URL=https://rpc.monad.xyz && set MCP_CHAIN_ID=201 && npx -y mcp-wallet-mcp"`
+> 如果你使用 Windows，请尝试 `cmd /c "set MCP_PRIVATE_KEY=0x... npx -y mcp-wallet-mcp"`
 
 ### 在 Windsurf 中运行
 
@@ -236,15 +236,31 @@ yarn add mcp-wallet
       "command": "npx",
       "args": ["-y", "mcp-wallet-mcp"],
       "env": {
-        "MCP_RPC_URL": "https://rpc.monad.xyz",
-        "MCP_CHAIN_ID": "201",
-        "MCP_ADDRESS": "YOUR_WALLET_ADDRESS",
-        "MCP_MPC_ENABLED": "true"
+        "MCP_PRIVATE_KEY": "0x...",
       }
     }
   }
 }
 ```
+
+### 在 Claude Desk 中运行
+
+在 Claude Desk 中配置 MCP 钱包：
+
+1. 在浏览器中打开 Claude Desk
+2. 点击左下角的个人资料图标
+3. 选择"设置"
+4. 导航至"工具"选项卡
+5. 点击"+ 添加工具"
+6. 输入以下信息：
+   - 工具名称："mcp-wallet"（或你喜欢的名称）
+   - 工具类型："命令行"
+   - 命令：`npx -y mcp-wallet-mcp`
+   - 环境变量：
+     - `MCP_PRIVATE_KEY`：`0x...`
+7. 点击"保存"
+
+配置完成后，Claude 可以通过自然语言命令与你的钱包交互。
 
 ## 环境变量配置
 
@@ -253,7 +269,7 @@ yarn add mcp-wallet
 ```bash
 # 必需配置
 export MCP_RPC_URL="https://rpc.monad.xyz"
-export MCP_CHAIN_ID="201"
+export MCP_CHAIN_ID="10143"
 
 # 认证（选择一种）
 export MCP_PRIVATE_KEY="0x..." # 用于签名交易的私钥

@@ -213,9 +213,9 @@ To configure MCP Wallet in Cursor:
 4. Enter the following:
    - Name: "mcp-wallet" (or your preferred name)
    - Type: "command"
-   - Command: `env MCP_RPC_URL=https://rpc.monad.xyz MCP_CHAIN_ID=201 npx -y mcp-wallet-mcp`
+   - Command: `env MCP_PRIVATE_KEY=0x... npx -y mcp-wallet-mcp`
 
-> If you are using Windows, try `cmd /c "set MCP_RPC_URL=https://rpc.monad.xyz && set MCP_CHAIN_ID=201 && npx -y mcp-wallet-mcp"`
+> If you are using Windows, try `cmd /c "set MCP_PRIVATE_KEY=0x... && npx -y mcp-wallet-mcp"`
 
 ### Running on Windsurf
 
@@ -228,15 +228,31 @@ Add this to your `./codeium/windsurf/model_config.json`:
       "command": "npx",
       "args": ["-y", "mcp-wallet-mcp"],
       "env": {
-        "MCP_RPC_URL": "https://rpc.monad.xyz",
-        "MCP_CHAIN_ID": "201",
-        "MCP_ADDRESS": "YOUR_WALLET_ADDRESS",
-        "MCP_MPC_ENABLED": "true"
+        "MCP_PRIVATE_KEY": "0x...",
       }
     }
   }
 }
 ```
+
+### Running on Claude Desk
+
+To configure MCP Wallet in Claude Desk:
+
+1. Open Claude Desk in your browser
+2. Click on your profile icon in the bottom left corner
+3. Select "Settings"
+4. Navigate to the "Tools" tab
+5. Click "+ Add Tool"
+6. Enter the following information:
+   - Tool Name: "mcp-wallet" (or your preferred name)
+   - Tool Type: "Command Line"
+   - Command: `npx -y mcp-wallet-mcp`
+   - Environment Variables:
+     - `MCP_PRIVATE_KEY`: `0x...`
+7. Click "Save"
+
+Once configured, Claude can interact with your wallet through natural language commands.
 
 ## Environment Variables Configuration
 
@@ -244,7 +260,7 @@ The recommended way to configure MCP Wallet is through environment variables:
 
 ```bash
 # Required configuration
-export MCP_RPC_URL="https://testnet.rpc.monad.xyz"
+export MCP_PRIVATE_KEY="https://testnet.rpc.monad.xyz"
 export MCP_CHAIN_ID="10143"
 
 # Authentication (choose one)
