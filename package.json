@@ -1,6 +1,6 @@
 {
   "name": "mcp-wallet",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A comprehensive Web3 wallet SDK based on the MCP (Model-Context-Protocol) for interacting with Monad and other EVM-compatible blockchains. Designed primarily for MCP-enabled AI assistants with secure key management and multi-chain support.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

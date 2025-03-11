@@ -170,6 +170,7 @@ const BRIDGE_TOOL: Tool = {
 /**
  * Create Token tool definition
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const CREATE_TOKEN_TOOL: Tool = {
   name: 'mcp_create_token',
   description: '创建一个新的代币.',
