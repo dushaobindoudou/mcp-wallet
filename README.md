@@ -235,22 +235,29 @@ Add this to your `./codeium/windsurf/model_config.json`:
 }
 ```
 
-### Running on Claude Desk
+### Running on Claude Desktop
 
-To configure MCP Wallet in Claude Desk:
+Add this to your `claude_desktop_config.json`:
 
-1. Open Claude Desk in your browser
-2. Click on your profile icon in the bottom left corner
-3. Select "Settings"
-4. Navigate to the "Tools" tab
-5. Click "+ Add Tool"
-6. Enter the following information:
-   - Tool Name: "mcp-wallet" (or your preferred name)
-   - Tool Type: "Command Line"
-   - Command: `npx -y mcp-wallet-mcp`
-   - Environment Variables:
-     - `MCP_PRIVATE_KEY`: `0x...`
-7. Click "Save"
+```json
+{
+  "mcpServers": {
+    "mcp-server-wallet": {
+      "command": "npx",
+      "args": ["-y", "mcp-wallet-mcp"],
+      "env": {
+        "MCP_PRIVATE_KEY": "YOUR_PRIVATE_KEY_HERE",
+        "MCP_RPC_URL": "https://testnet.rpc.monad.xyz",
+        "MCP_CHAIN_ID": "10143",
+        
+        "MCP_MPC_ENABLED": "true",
+        "MCP_MAX_FEE": "50",
+        "MCP_APPROVAL_TIMEOUT": "120"
+      }
+    }
+  }
+}
+```
 
 Once configured, Claude can interact with your wallet through natural language commands.
 

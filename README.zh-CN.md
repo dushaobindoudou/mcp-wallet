@@ -243,24 +243,39 @@ yarn add mcp-wallet
 }
 ```
 
-### 在 Claude Desk 中运行
+### 在 Claude Desktop 中运行
 
-在 Claude Desk 中配置 MCP 钱包：
+将以下内容添加到你的 `claude_desktop_config.json` 文件中：
 
-1. 在浏览器中打开 Claude Desk
-2. 点击左下角的个人资料图标
-3. 选择"设置"
-4. 导航至"工具"选项卡
-5. 点击"+ 添加工具"
-6. 输入以下信息：
-   - 工具名称："mcp-wallet"（或你喜欢的名称）
-   - 工具类型："命令行"
-   - 命令：`npx -y mcp-wallet-mcp`
-   - 环境变量：
-     - `MCP_PRIVATE_KEY`：`0x...`
-7. 点击"保存"
+```json
+{
+  "mcpServers": {
+    "mcp-server-wallet": {
+      "command": "npx",
+      "args": ["-y", "mcp-wallet-mcp"],
+      "env": {
+        "MCP_PRIVATE_KEY": "你的私钥",
+      }
+    }
+  }
+}
+```
 
 配置完成后，Claude 可以通过自然语言命令与你的钱包交互。
+
+#### Claude 使用说明
+
+![配置成功](./docs/images/mcp-tools.png)
+*在 Claude 配置成功后展示*
+
+![查看链接钱包](./docs/images/address.png)
+*在 Claude 中查看链接钱包*
+
+![转移资金](./docs/images/transfer.png)
+*在 Claude 中转移资金*
+
+![查看余额](./docs/images/balance.png)
+*在 Claude 中查看钱包余额*
 
 ## 环境变量配置
 
